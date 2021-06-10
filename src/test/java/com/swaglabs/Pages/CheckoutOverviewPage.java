@@ -20,7 +20,7 @@ public class CheckoutOverviewPage {
     @FindBy(xpath = "//div[@class='summary_total_label']")
     private WebElement totalLabel;
 
-    @FindBy(xpath = "//a[@class='btn_action cart_button']")
+    @FindBy(id = "finish")
     private WebElement finishButton;
 
 

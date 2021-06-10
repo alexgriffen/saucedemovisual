@@ -50,7 +50,7 @@ public class LoginLogoutStandardUser extends TestBase {
 
 
         this.annotate("View Product Inventory...");
-        AssertJUnit.assertTrue(inventory.viewInventory().contains("Products"));
+        AssertJUnit.assertTrue(inventory.viewInventory().contains("Backpack"));
         js.executeScript("/*@visual.snapshot*/", "verify successful login");
 
         this.annotate("Logging Out...");

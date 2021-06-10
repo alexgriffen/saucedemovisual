@@ -20,7 +20,7 @@ public class CartPage {
     @FindBy(xpath = "//div[contains(text(),'Sauce Labs Onesie')]")
     private WebElement onesieLabel;
 
-    @FindBy(xpath = "//a[@class='btn_action checkout_button']")
+    @FindBy(id = "checkout")
     private WebElement checkoutButton;
 
 

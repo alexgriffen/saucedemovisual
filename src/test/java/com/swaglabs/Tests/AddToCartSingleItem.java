@@ -45,7 +45,7 @@ public class AddToCartSingleItem extends TestBase {
 //        InventoryPage inventoryPage = loginPage.enterCredentials("standard_user", "secret_sauce");
 
         this.annotate("View Product Inventory...");
-        AssertJUnit.assertTrue(inventoryPage.viewInventory().contains("Products"));
+        AssertJUnit.assertTrue(inventoryPage.viewInventory().contains("Backpack"));
         js.executeScript("/*@visual.snapshot*/", "products");
 
         this.annotate("Add To Cart Backpack...");

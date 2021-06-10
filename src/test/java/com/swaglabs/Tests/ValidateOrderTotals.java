@@ -43,7 +43,7 @@ public class ValidateOrderTotals extends TestBase {
 //        InventoryPage inventory = page.enterCredentials("standard_user", "secret_sauce");
 
         this.annotate("View Product Inventory...");
-        AssertJUnit.assertTrue(inventory.viewInventory().contains("Products")); // 1 Assert
+        AssertJUnit.assertTrue(inventory.viewInventory().contains("Backpack")); // 1 Assert
 
         this.annotate("Add To Cart Backpack...");
         inventory.clickAddToCartBackpack();

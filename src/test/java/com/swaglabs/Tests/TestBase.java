@@ -1,5 +1,6 @@
 package com.swaglabs.Tests;
 
+import javafx.util.converter.LongStringConverter;
 import org.json.JSONObject;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
@@ -173,7 +174,8 @@ public class TestBase {
 //        System.setProperty("https.proxyHost", "localhost");
 //        System.setProperty("https.proxyPort", "8080");
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
+//        DesiredCapabilities capabilities = new DesiredCapabilities();
+        MutableCapabilities capabilities = new MutableCapabilities();
 
         // set desired capabilities to launch appropriate browser on Sauce
         capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
@@ -193,10 +195,10 @@ public class TestBase {
             sauceVisual.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
             sauceVisual.setCapability("projectName", "newestProject");
             sauceVisual.setCapability("viewportSize", "1920x1080");
-            sauceVisual.setCapability("viewportSize", "640x360");
-            sauceVisual.setCapability("viewportSize", "1024x768"); // You can test multiple viewport sizes at the same time
-            sauceVisual.setCapability("branch", "swaglabs/loginValidUser");
-            sauceVisual.setCapability("baseBranch", "project/master");
+//            sauceVisual.setCapability("viewportSize", "640x360");
+//            sauceVisual.setCapability("viewportSize", "1024x768"); // You can test multiple viewport sizes at the same time
+            sauceVisual.setCapability("branch", "swaglabs/branch1");
+//            sauceVisual.setCapability("baseBranch", "swaglabs/branch1");
 
         capabilities.setCapability("sauce:visual", sauceVisual);
 
@@ -242,7 +244,8 @@ public class TestBase {
         }
         capabilities.setCapability("sauce:options", sauce);
 
-        System.out.println(capabilities);
+
+        System.out.print(capabilities);
 
         // Launch remote browser and set it as the current thread
         webDriver.set(new RemoteWebDriver(

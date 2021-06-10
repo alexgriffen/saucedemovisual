@@ -20,7 +20,7 @@ public class CheckoutPage {
 	@FindBy(xpath = "//input[@placeholder='Zip/Postal Code']")
     private WebElement zipCodeTextBox;
 
-	@FindBy(xpath = "//input[@value='CONTINUE']")
+	@FindBy(id = "continue")
     private WebElement continueButton;
 
 

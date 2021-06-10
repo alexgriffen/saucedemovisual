@@ -56,35 +56,55 @@ public class LoginValidUser extends TestBase {
         this.annotate("Enable log to after text password");
 
         this.annotate("View Product Inventory...");
-        AssertJUnit.assertTrue(inventory.viewInventory().contains("sleek"));
+        AssertJUnit.assertTrue(inventory.viewInventory().contains("Backpack"));
 
         //*^~*^~*^~*~*^~*
         //Start JS section to mess with the page for demos
         //*^~*^~*^~*~*^~*
-        /* //remove this and the end comment block around line 87 for diffs
-        //Demo purposes only change all images to Joey from Friends
+
+            // remove the block comments around each JAVASCRIPT INSERT
+            // also remove the comment lines for the snapshots themselves:
+            // lines 76, 88, 98, and 106
+
+        /*
+        // JAVASCRIPT INSERT 1 - DEMO PURPOSES ONLY
+        // Change all images to Joey from Friends
         this.annotate("Who likes Friends?");
         js.executeScript("document.querySelectorAll('.inventory_item_img').forEach(function (item) {item.src = 'https://i.pinimg.com/736x/46/91/c9/4691c9ec1ec3343a33aa1f8cca1915bb.jpg'})");
         Thread.sleep(1000);
+        */
+//        js.executeScript("/*@visual.snapshot*/", "have images changed");
 
-        //randomly remove various Item Names
+        /*
+        // JAVASCRIPT INSERT 2 - DEMO PURPOSES ONLY
+        // Randomly remove various Item Names
         this.annotate("Randomly remove various Item Names");
         js.executeScript("var items = document.querySelectorAll('.inventory_item_name')\n" +
                         "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'\n" +
                         "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'\n" +
                         "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'");
         Thread.sleep(1000);
+        */
+//        js.executeScript("/*@visual.snapshot*/", "are Item Names all correct?");
 
-        //randomly change the height of an Item Name
+        /*
+        // JAVASCRIPT INSERT 3 - DEMO PURPOSES ONLY
+        // Randomly change the height of an Item Name
         this.annotate("Randomly change the height of an Item Name");
         js.executeScript("var items = document.querySelectorAll('.inventory_item_name')\n" +
                 "items[Math.floor(Math.random() * 5)].style.height = '400px'");
         Thread.sleep(1000);
+        */
+//        js.executeScript("/*@visual.snapshot*/", "how are the Item Name container heights?");
 
-        //disable css
+        /*
+        // JAVASCRIPT INSERT 4 - DEMO PURPOSES ONLY
+        // Disable css
         this.annotate("Disable css scripts");
         js.executeScript("for (var i = 0; i < document.styleSheets.length; i++) \n{     document.styleSheets[i].disabled = true;\n}");
-        */
+         */
+//        js.executeScript("/*@visual.snapshot*/", "is there any css?");
+
         //*^~*^~*^~*~*^~*
         //END JS section to mess with the page for demos
         //*^~*^~*^~*~*^~*
@@ -96,8 +116,8 @@ public class LoginValidUser extends TestBase {
 //        WebDriverWait wait = new WebDriverWait(driver, 10);
 //        driver.wait(10);
 
-        Map response = (Map)((JavascriptExecutor) driver).executeScript("/*@visual.end*/");
-        Assert.assertTrue((Boolean)response.get("passed"), (String)response.get("message"));
+//        Map response = (Map)((JavascriptExecutor) driver).executeScript("/*@visual.end*/");
+//        Assert.assertTrue((Boolean)response.get("passed"), (String)response.get("message"));
 
     }
 //    }

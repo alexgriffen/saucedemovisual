@@ -36,7 +36,7 @@ public class InventoryPage {
     @FindBy(xpath = "//a[@id='logout_sidebar_link']")
     private WebElement logoutLink; 
     
-    @FindBy(xpath = "//button[contains(text(),'Open Menu')]")
+    @FindBy(id = "react-burger-menu-btn")
     private WebElement menuButton; 
     
   

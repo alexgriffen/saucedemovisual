@@ -45,7 +45,7 @@ public class AddToCartMultipleItems extends TestBase {
 //        InventoryPage inventory = page.enterCredentials("standard_user", "secret_sauce");
 
         this.annotate("View Product Inventory...");
-        AssertJUnit.assertTrue(inventory.viewInventory().contains("Products"));
+        AssertJUnit.assertTrue(inventory.viewInventory().contains("Backpack"));
 
         this.annotate("Add To Cart Backpack...");
         inventory.clickAddToCartBackpack();
