@@ -31,8 +31,7 @@ public class LoginPage {
     public WebDriver driver;
     public static String url = "https://www.saucedemo.com/";
 //    public static String url = "https://swaglabs.herokuapp.com/";
-//    public static String url = "https://www.ea.com/";
-//    public static String url = "https://www.atlassian.com/software/jira/core/pricing";
+//    public static String url = "https://www.figma.com/file/BM0fWZD95YY4sfHYKcUCqL/VisualTest";
 
     public static LoginPage visitPage(WebDriver driver) {
     	LoginPage page = new LoginPage(driver);
@@ -80,6 +79,7 @@ public class LoginPage {
     public boolean verifyLoginPage() {
     	WebDriverWait wait = new WebDriverWait(driver, 20);
     	wait.until(ExpectedConditions.visibilityOf(loginButton));
+//    	wait.until(ExpectedConditions.visibilityOf(reactPage));
     	//System.out.println("Value is: "+loginButton.getText());
         return true;
     }

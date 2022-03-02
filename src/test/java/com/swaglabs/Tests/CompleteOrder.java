@@ -84,7 +84,7 @@ public class CompleteOrder extends TestBase {
         AssertJUnit.assertTrue(checkoutPage.verfiyCheckoutPage());
 
         this.annotate("Enter User details...");
-        checkoutPage.enterUserDetails("Tom", "Jones", "12345");
+        checkoutPage.enterUserDetails("Betty", "Jones", "12345");
 
         this.annotate("Continue to Checkout Overview Page...");
         CheckoutOverviewPage overviewPage = checkoutPage.clickContinue();

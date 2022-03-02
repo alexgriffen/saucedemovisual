@@ -32,14 +32,14 @@ public class LaunchSwagLabs extends TestBase {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("/*@visual.init*/", "LaunchSwabLabs");
+        js.executeScript("/*@visual.init*/", "LaunchSwagLabs");
 
-        // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   	    // driver.manage().window().maximize();
 
 
         this.annotate("Visiting Swag Labs Login page...");
-        LoginPage page = LoginPage.visitPage(driver);
+//        LoginPage page = LoginPage.visitPage(driver);
         //Assert.assertTrue(page.verifyLoginPage().contains("LOGIN"));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -47,11 +47,13 @@ public class LaunchSwagLabs extends TestBase {
 //        WebElement elementLocator1 = driver.findElement(By.cssSelector("#login_credentials > h4"));
 //        actions.doubleClick(elementLocator1).perform();
 
-        AssertJUnit.assertTrue(page.verifyLoginPage());
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+//        AssertJUnit.assertTrue(page.verifyLoginPage());
         js.executeScript("/*@visual.snapshot*/", "verify home");
 
-//        Map response = (Map)((JavascriptExecutor) driver).executeScript("/*@visual.end*/");
-//        Assert.assertTrue((Boolean)response.get("passed"), (String)response.get("message"));
+        Map response = (Map)((JavascriptExecutor) driver).executeScript("/*@visual.end*/");
+        Assert.assertTrue((Boolean)response.get("passed"), (String)response.get("message"));
     }
 
 }
