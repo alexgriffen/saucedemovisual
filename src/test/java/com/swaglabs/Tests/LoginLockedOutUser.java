@@ -31,7 +31,7 @@ public class LoginLockedOutUser extends TestBase {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("/*@visual.init*/", "LoginLockedOutUser");
+//        js.executeScript("/*@visual.init*/", "LoginLockedOutUser");
 
 
         // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -45,7 +45,7 @@ public class LoginLockedOutUser extends TestBase {
 
         this.annotate("Verify Locked Out User Message...");
         AssertJUnit.assertTrue(page.verifyLockedOutMessage().contains("Epic sadface"));
-        js.executeScript("/*@visual.snapshot*/", "verify login error");
+//        js.executeScript("/*@visual.snapshot*/", "verify login error");
 
     }
 

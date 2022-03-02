@@ -33,7 +33,7 @@ public class ValidateOrderTotals extends TestBase {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("/*@visual.init*/", "ValidateOrderTotals");
+//        js.executeScript("/*@visual.init*/", "ValidateOrderTotals");
 
         this.annotate("Visiting Swag Labs Login page...");
         LoginPage page = LoginPage.visitPage(driver);
@@ -77,7 +77,7 @@ public class ValidateOrderTotals extends TestBase {
 
         this.annotate("Enter User details...");
         checkoutPage.enterUserDetails("Tom", "Jones", "12345");
-        js.executeScript("/*@visual.snapshot*/", "verify user details"); //saves three asserts
+//        js.executeScript("/*@visual.snapshot*/", "verify user details"); //saves three asserts
 
         this.annotate("Continue to Checkout Overview Page...");
         CheckoutOverviewPage overviewPage = checkoutPage.clickContinue();
@@ -93,7 +93,7 @@ public class ValidateOrderTotals extends TestBase {
 
         this.annotate("Verify Total...");
         AssertJUnit.assertTrue(overviewPage.verifyTotal().contains("$140.34")); // 4 Asserts
-        js.executeScript("/*@visual.snapshot*/", "verify successful calculations"); //saves four asserts
+//        js.executeScript("/*@visual.snapshot*/", "verify successful calculations"); //saves four asserts
 
     }
 

@@ -31,7 +31,7 @@ public class LoginLogoutStandardUser extends TestBase {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("/*@visual.init*/", "LoginLogout");
+//        js.executeScript("/*@visual.init*/", "LoginLogout");
 
 
         // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -51,12 +51,12 @@ public class LoginLogoutStandardUser extends TestBase {
 
         this.annotate("View Product Inventory...");
         AssertJUnit.assertTrue(inventory.viewInventory().contains("Backpack"));
-        js.executeScript("/*@visual.snapshot*/", "verify successful login");
+//        js.executeScript("/*@visual.snapshot*/", "verify successful login");
 
         this.annotate("Logging Out...");
         inventory.clickMenuButton();
         inventory.clickLogout();
-        js.executeScript("/*@visual.snapshot*/", "verify successful logout");
+//        js.executeScript("/*@visual.snapshot*/", "verify successful logout");
 
 
 

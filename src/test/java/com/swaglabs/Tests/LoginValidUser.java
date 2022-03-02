@@ -39,14 +39,14 @@ public class LoginValidUser extends TestBase {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("/*@visual.init*/", "LoginValidUser");
+//        js.executeScript("/*@visual.init*/", "LoginValidUser");
 
         this.annotate("Visiting Swag Labs Login page...");
         LoginPage page = LoginPage.visitPage(driver);
 
         this.annotate("Greet Sign In To Swag Labs Page...");
 
-        js.executeScript("/*@visual.snapshot*/", "LoadPage");
+//        js.executeScript("/*@visual.snapshot*/", "LoadPage");
 
         this.annotate("Disable log to hide text password");
         this.stopLog();
@@ -112,7 +112,7 @@ public class LoginValidUser extends TestBase {
 
         this.annotate("sleeping for a few seconds so humans can see the changes");
         Thread.sleep(5000);
-        js.executeScript("/*@visual.snapshot*/", "verify successful login");
+//        js.executeScript("/*@visual.snapshot*/", "verify successful login");
 //        WebDriverWait wait = new WebDriverWait(driver, 10);
 //        driver.wait(10);
 

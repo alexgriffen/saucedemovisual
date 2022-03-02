@@ -33,7 +33,7 @@ public class AddToCartMultipleItems extends TestBase {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("/*@visual.init*/", "AddToCartMultipleItems");
+//        js.executeScript("/*@visual.init*/", "AddToCartMultipleItems");
         // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   	    // driver.manage().window().maximize();
 
@@ -49,15 +49,15 @@ public class AddToCartMultipleItems extends TestBase {
 
         this.annotate("Add To Cart Backpack...");
         inventory.clickAddToCartBackpack();
-        js.executeScript("/*@visual.snapshot*/", "add backpack");
+//        js.executeScript("/*@visual.snapshot*/", "add backpack");
 
         this.annotate("Add To Cart Bolt Tshirt...");
         inventory.clickAddToCartBoltTshirt();
-        js.executeScript("/*@visual.snapshot*/", "add bolt shirt");
+//        js.executeScript("/*@visual.snapshot*/", "add bolt shirt");
 
         this.annotate("Add To Cart Onesie...");
         inventory.clickAddToCartOnesie();
-        js.executeScript("/*@visual.snapshot*/", "add onesie");
+//        js.executeScript("/*@visual.snapshot*/", "add onesie");
 
         this.annotate("Go To Cart...");
         CartPage cart = inventory.goToCart();
@@ -70,7 +70,7 @@ public class AddToCartMultipleItems extends TestBase {
 
         this.annotate("Verify Onesie In Cart...");
         AssertJUnit.assertTrue(cart.verifyOnesieinCart().contains("Sauce Labs Onesie"));
-        js.executeScript("/*@visual.snapshot*/", "see backpack, shirt, and onesie");
+//        js.executeScript("/*@visual.snapshot*/", "see backpack, shirt, and onesie");
 
     }
 
