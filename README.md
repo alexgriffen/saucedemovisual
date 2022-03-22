@@ -5,6 +5,7 @@ This code is provided on an "AS-IS” basis without warranty of any kind, either
 ### Environment Setup
 
 1. Global Dependencies
+    * This project assumes you have a valid value for $JAVA_HOME set in your environment - [here's an article](https://www.baeldung.com/java-home-on-windows-7-8-10-mac-os-x-linux) that can help if needed
     * [Install Maven](https://maven.apache.org/install.html)
     * Or Install Maven with [Homebrew](http://brew.sh/)
     ```
