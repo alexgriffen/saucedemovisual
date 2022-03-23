@@ -69,19 +69,19 @@ public class TestBase {
 
             new Object[]{"firefox", "latest", "Windows 10"},
 //            new Object[]{"firefox", "latest", "Windows 7"},
-            new Object[]{"firefox", "latest-1", "Windows 10"},
-            new Object[]{"firefox", "latest-2", "Windows 10"},
+//            new Object[]{"firefox", "latest-1", "Windows 10"},
+//            new Object[]{"firefox", "latest-2", "Windows 10"},
 
             new Object[]{"chrome", "latest", "Windows 10"},
-            new Object[]{"chrome", "latest-1", "Windows 10"},
-            new Object[]{"chrome", "latest-2", "Windows 10"},
+//            new Object[]{"chrome", "latest-1", "Windows 10"},
+//            new Object[]{"chrome", "latest-2", "Windows 10"},
 
             new Object[]{"chrome", "latest", "Windows 7"},
 
 
             new Object[]{"MicrosoftEdge", "latest", "Windows 10"},
-            new Object[]{"MicrosoftEdge", "latest-1", "Windows 10"},
-            new Object[]{"MicrosoftEdge", "latest-2", "Windows 10"},
+//            new Object[]{"MicrosoftEdge", "latest-1", "Windows 10"},
+//            new Object[]{"MicrosoftEdge", "latest-2", "Windows 10"},
 
 
 //            new Object[]{"chrome", "latest", "Windows 10"},
@@ -192,16 +192,16 @@ public class TestBase {
 //        capabilities.setCapability("name", methodName + " password logging enabled");
 //        capabilities.setCapability("build", buildTag);
 
-//            MutableCapabilities sauceVisual = new MutableCapabilities();
-//            sauceVisual.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
-//            sauceVisual.setCapability("projectName", "TomsTest3");
-//            sauceVisual.setCapability("viewportSize", "1920x1080");
-//            sauceVisual.setCapability("viewportSize", "640x360");
-//            sauceVisual.setCapability("viewportSize", "1024x768"); // You can test multiple viewport sizes at the same time
-//            sauceVisual.setCapability("branch", "figma/1");
-//            sauceVisual.setCapability("baseBranch", "figma/branch1");
+            MutableCapabilities sauceVisual = new MutableCapabilities();
+            sauceVisual.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
+            sauceVisual.setCapability("projectName", "TomsTest3");
+            sauceVisual.setCapability("viewportSize", "1920x1080");
+            sauceVisual.setCapability("viewportSize", "640x360");
+            sauceVisual.setCapability("viewportSize", "1024x768"); // You can test multiple viewport sizes at the same time
+            sauceVisual.setCapability("branch", "figma/1");
+            sauceVisual.setCapability("baseBranch", "figma/branch1");
 //
-//        capabilities.setCapability("sauce:visual", sauceVisual);
+        capabilities.setCapability("sauce:visual", sauceVisual);
 
 //        Map<String, Object> deviceMetrics = new HashMap<>();
 //        deviceMetrics.put("width", 360);
@@ -251,8 +251,8 @@ public class TestBase {
         // Launch remote browser and set it as the current thread
         webDriver.set(new RemoteWebDriver(
 //                        new URL("https://ondemand.us-west-4-i3er.saucelabs.com/wd/hub"), // Sauce full VMs
-                        new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), // Sauce full VMs
-//                        new URL("https://hub.screener.io:443/wd/hub"), // Screener full VMs
+//                        new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), // Sauce full VMs
+                        new URL("https://hub.screener.io:443/wd/hub"), // Screener full VMs
                         capabilities)
         );
 

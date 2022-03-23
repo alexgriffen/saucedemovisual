@@ -1,6 +1,7 @@
 package com.swaglabs.Tests;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.InvalidElementStateException;
@@ -10,6 +11,7 @@ import com.swaglabs.Pages.LoginPage;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.rmi.UnexpectedException;
+import java.util.Map;
 
 /**
  * Created by Shadab Siddiqui on 11/21/18.
@@ -31,7 +33,7 @@ public class LoginLogoutStandardUser extends TestBase {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("/*@visual.init*/", "LoginLogout");
+        js.executeScript("/*@visual.init*/", "LoginLogout");
 
 
         // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -51,14 +53,15 @@ public class LoginLogoutStandardUser extends TestBase {
 
         this.annotate("View Product Inventory...");
         AssertJUnit.assertTrue(inventory.viewInventory().contains("Backpack"));
-//        js.executeScript("/*@visual.snapshot*/", "verify successful login");
+        js.executeScript("/*@visual.snapshot*/", "verify successful login");
 
         this.annotate("Logging Out...");
         inventory.clickMenuButton();
         inventory.clickLogout();
-//        js.executeScript("/*@visual.snapshot*/", "verify successful logout");
+        js.executeScript("/*@visual.snapshot*/", "verify successful logout");
 
-
+        Map response = (Map)((JavascriptExecutor) driver).executeScript("/*@visual.end*/");
+        Assert.assertTrue((Boolean)response.get("passed"), (String)response.get("message"));
 
     }
 

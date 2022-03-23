@@ -39,14 +39,14 @@ public class LoginValidUser extends TestBase {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("/*@visual.init*/", "LoginValidUser");
+        js.executeScript("/*@visual.init*/", "LoginValidUser");
 
         this.annotate("Visiting Swag Labs Login page...");
         LoginPage page = LoginPage.visitPage(driver);
 
         this.annotate("Greet Sign In To Swag Labs Page...");
 
-//        js.executeScript("/*@visual.snapshot*/", "LoadPage");
+        js.executeScript("/*@visual.snapshot*/", "LoadPage");
 
         this.annotate("Disable log to hide text password");
         this.stopLog();
@@ -73,7 +73,7 @@ public class LoginValidUser extends TestBase {
         js.executeScript("document.querySelectorAll('.inventory_item_img').forEach(function (item) {item.src = 'https://i.pinimg.com/736x/46/91/c9/4691c9ec1ec3343a33aa1f8cca1915bb.jpg'})");
         Thread.sleep(1000);
         */
-//        js.executeScript("/*@visual.snapshot*/", "have images changed");
+        js.executeScript("/*@visual.snapshot*/", "have images changed");
 
         /*
         // JAVASCRIPT INSERT 2 - DEMO PURPOSES ONLY
@@ -85,7 +85,7 @@ public class LoginValidUser extends TestBase {
                         "items[Math.floor(Math.random() * 5)].style.visibility = 'hidden'");
         Thread.sleep(1000);
         */
-//        js.executeScript("/*@visual.snapshot*/", "are Item Names all correct?");
+        js.executeScript("/*@visual.snapshot*/", "are Item Names all correct?");
 
         /*
         // JAVASCRIPT INSERT 3 - DEMO PURPOSES ONLY
@@ -95,7 +95,7 @@ public class LoginValidUser extends TestBase {
                 "items[Math.floor(Math.random() * 5)].style.height = '400px'");
         Thread.sleep(1000);
         */
-//        js.executeScript("/*@visual.snapshot*/", "how are the Item Name container heights?");
+        js.executeScript("/*@visual.snapshot*/", "how are the Item Name container heights?");
 
         /*
         // JAVASCRIPT INSERT 4 - DEMO PURPOSES ONLY
@@ -103,7 +103,7 @@ public class LoginValidUser extends TestBase {
         this.annotate("Disable css scripts");
         js.executeScript("for (var i = 0; i < document.styleSheets.length; i++) \n{     document.styleSheets[i].disabled = true;\n}");
          */
-//        js.executeScript("/*@visual.snapshot*/", "is there any css?");
+        js.executeScript("/*@visual.snapshot*/", "is there any css?");
 
         //*^~*^~*^~*~*^~*
         //END JS section to mess with the page for demos
@@ -112,12 +112,12 @@ public class LoginValidUser extends TestBase {
 
         this.annotate("sleeping for a few seconds so humans can see the changes");
         Thread.sleep(5000);
-//        js.executeScript("/*@visual.snapshot*/", "verify successful login");
+        js.executeScript("/*@visual.snapshot*/", "verify successful login");
 //        WebDriverWait wait = new WebDriverWait(driver, 10);
 //        driver.wait(10);
 
-//        Map response = (Map)((JavascriptExecutor) driver).executeScript("/*@visual.end*/");
-//        Assert.assertTrue((Boolean)response.get("passed"), (String)response.get("message"));
+        Map response = (Map)((JavascriptExecutor) driver).executeScript("/*@visual.end*/");
+        Assert.assertTrue((Boolean)response.get("passed"), (String)response.get("message"));
 
     }
 //    }

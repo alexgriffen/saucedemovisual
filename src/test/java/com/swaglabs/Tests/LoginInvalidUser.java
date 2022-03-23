@@ -1,6 +1,7 @@
 package com.swaglabs.Tests;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.InvalidElementStateException;
@@ -10,6 +11,7 @@ import com.swaglabs.Pages.LoginPage;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.rmi.UnexpectedException;
+import java.util.Map;
 
 /**
  * Created by Shadab Siddiqui on 11/21/18.
@@ -31,7 +33,7 @@ public class LoginInvalidUser extends TestBase {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("/*@visual.init*/", "LoginInvalidUser");
+        js.executeScript("/*@visual.init*/", "LoginInvalidUser");
 
         // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   	    // driver.manage().window().maximize();
@@ -44,8 +46,10 @@ public class LoginInvalidUser extends TestBase {
 
         this.annotate("Verify Invalid User Message...");
         AssertJUnit.assertTrue(page.verifyLockedOutMessage().contains("do not match"));
-//        js.executeScript("/*@visual.snapshot*/", "verify locked out user");
+        js.executeScript("/*@visual.snapshot*/", "verify locked out user");
 
+        Map response = (Map)((JavascriptExecutor) driver).executeScript("/*@visual.end*/");
+        Assert.assertTrue((Boolean)response.get("passed"), (String)response.get("message"));
     }
 
 }

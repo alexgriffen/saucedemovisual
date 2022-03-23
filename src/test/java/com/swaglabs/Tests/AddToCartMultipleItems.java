@@ -1,6 +1,7 @@
 package com.swaglabs.Tests;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.InvalidElementStateException;
@@ -11,6 +12,7 @@ import com.swaglabs.Pages.LoginPage;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.rmi.UnexpectedException;
+import java.util.Map;
 
 
 /**
@@ -33,9 +35,9 @@ public class AddToCartMultipleItems extends TestBase {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("/*@visual.init*/", "AddToCartMultipleItems");
-        // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-  	    // driver.manage().window().maximize();
+        js.executeScript("/*@visual.init*/", "AddToCartMultipleItems");
+//         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//  	     driver.manage().window().maximize();
 
         this.annotate("Visiting Swag Labs Login page...");
         LoginPage page = LoginPage.visitPage(driver);
@@ -49,15 +51,15 @@ public class AddToCartMultipleItems extends TestBase {
 
         this.annotate("Add To Cart Backpack...");
         inventory.clickAddToCartBackpack();
-//        js.executeScript("/*@visual.snapshot*/", "add backpack");
+        js.executeScript("/*@visual.snapshot*/", "add backpack");
 
         this.annotate("Add To Cart Bolt Tshirt...");
         inventory.clickAddToCartBoltTshirt();
-//        js.executeScript("/*@visual.snapshot*/", "add bolt shirt");
+        js.executeScript("/*@visual.snapshot*/", "add bolt shirt");
 
         this.annotate("Add To Cart Onesie...");
         inventory.clickAddToCartOnesie();
-//        js.executeScript("/*@visual.snapshot*/", "add onesie");
+        js.executeScript("/*@visual.snapshot*/", "add onesie");
 
         this.annotate("Go To Cart...");
         CartPage cart = inventory.goToCart();
@@ -70,8 +72,10 @@ public class AddToCartMultipleItems extends TestBase {
 
         this.annotate("Verify Onesie In Cart...");
         AssertJUnit.assertTrue(cart.verifyOnesieinCart().contains("Sauce Labs Onesie"));
-//        js.executeScript("/*@visual.snapshot*/", "see backpack, shirt, and onesie");
+        js.executeScript("/*@visual.snapshot*/", "see backpack, shirt, and onesie");
 
+        Map response = (Map)((JavascriptExecutor) driver).executeScript("/*@visual.end*/");
+        Assert.assertTrue((Boolean)response.get("passed"), (String)response.get("message"));
     }
 
 }

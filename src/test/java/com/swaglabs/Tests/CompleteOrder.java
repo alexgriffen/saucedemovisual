@@ -1,6 +1,7 @@
 package com.swaglabs.Tests;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.InvalidElementStateException;
@@ -14,6 +15,7 @@ import com.swaglabs.Pages.OrderConfirmationPage;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.rmi.UnexpectedException;
+import java.util.Map;
 
 /**
  * Created by Shadab Siddiqui on 11/21/18.
@@ -35,7 +37,7 @@ public class CompleteOrder extends TestBase {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("/*@visual.init*/", "CompleteOrder");
+        js.executeScript("/*@visual.init*/", "CompleteOrder");
 
 
         // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -44,7 +46,7 @@ public class CompleteOrder extends TestBase {
         this.annotate("Visiting Swag Labs Login page...");
         LoginPage page = LoginPage.visitPage(driver);
 
-//        js.executeScript("/*@visual.snapshot*/", "LoadPage");
+        js.executeScript("/*@visual.snapshot*/", "LoadPage");
 
         this.annotate("Greet Sign In To Swag Labs Page...");
         InventoryPage inventory = page.enterCredentials("performance_glitch_user", "secret_sauce");
@@ -100,18 +102,20 @@ public class CompleteOrder extends TestBase {
 
         this.annotate("Verify Total...");
         AssertJUnit.assertTrue(overviewPage.verifyTotal().contains("$140.34"));
-//        js.executeScript("/*@visual.snapshot*/", "verify totals");
+        js.executeScript("/*@visual.snapshot*/", "verify totals");
 
         this.annotate("Continue to Order Confirmation Page...");
         OrderConfirmationPage confirmationPage = overviewPage.clickFinish();
 
         this.annotate("Verify Final Order Confirmation Page...");
         AssertJUnit.assertTrue(confirmationPage.verfiyOrderConfirmationPage());
-//        js.executeScript("/*@visual.snapshot*/", "verify completed order");
+        js.executeScript("/*@visual.snapshot*/", "verify completed order");
 
         this.annotate("Verify Thank you message...");
         AssertJUnit.assertTrue(confirmationPage.verifyThankyouMessage().contains("THANK YOU FOR YOUR ORDER"));
 
+        Map response = (Map)((JavascriptExecutor) driver).executeScript("/*@visual.end*/");
+        Assert.assertTrue((Boolean)response.get("passed"), (String)response.get("message"));
     }
 
 }
