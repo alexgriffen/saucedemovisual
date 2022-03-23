@@ -11,12 +11,15 @@ This code is provided on an "AS-IS” basis without warranty of any kind, either
     ```
     $ brew install maven
     ```
-2. Sauce Credentials
+2. Sauce and Sauce Visual Credentials
     * In the terminal export your Sauce Labs Credentials as environmental variables:
+      * to save yourself some time in the future, save these values in ~/.bash_profile (and run $ source ~/.bash_profile when you start up your IDE) or better yet ~/.zshrc 
     ```
     $ export SAUCE_USERNAME=<your Sauce Labs username>
-	$ export SAUCE_ACCESS_KEY=<your Sauce Labs access key>
+    $ export SAUCE_ACCESS_KEY=<your Sauce Labs access key>
+    $ export SCREENER_API_KEY=<your Screener.io api key>
     ```
+   
 3. Project Dependencies
 	* Check that Packages are available
 	```
