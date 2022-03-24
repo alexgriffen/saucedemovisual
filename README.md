@@ -1,6 +1,6 @@
 ## saucedemo
 
-This code is provided on an "AS-IS” basis without warranty of any kind, either express or implied, including without limitation any implied warranties of condition, uninterrupted use, merchantability, fitness for a particular purpose, or non-infringement. Your tests and testing environments may require you to modify this framework. Issues regarding this framework should be submitted through GitHub. For questions regarding Sauce Labs integration, please see the Sauce Labs documentation at https://wiki.saucelabs.com/. This framework is not maintained by Sauce Labs Support.
+This code is provided on an "AS-IS” basis without warranty of any kind, either express or implied, including without limitation any implied warranties of condition, uninterrupted use, merchantability, fitness for a particular purpose, or non-infringement. Your tests and testing environments may require you to modify this framework. Issues regarding this framework should be submitted through GitHub. For questions regarding Sauce Labs integration, please see the Sauce Labs documentation at https://wiki.saucelabs.com/. This framework is not maintained by Sauce Labs Support. For the most part, this example assumes you're using a Mac.
 
 ### Environment Setup
 
@@ -18,8 +18,9 @@ This code is provided on an "AS-IS” basis without warranty of any kind, either
     $ export SAUCE_USERNAME=<your Sauce Labs username>
     $ export SAUCE_ACCESS_KEY=<your Sauce Labs access key>
     $ export SCREENER_API_KEY=<your Screener.io api key>
+    $ export BUILD_TAG=$(python -c 'import datetime; print datetime.datetime.now()')
     ```
-   
+   NOTE: BUILD_TAG in this case sets the system date/time as the Build variable's value - it's not strictly required, but it's nice to help keep track of individual builds
 3. Project Dependencies
 	* Check that Packages are available
 	```
@@ -32,10 +33,11 @@ This code is provided on an "AS-IS” basis without warranty of any kind, either
 	```
 ### Running Tests
 
-Tests in Parallel:
-	```
-	$ mvn test
-	```
+1. Kick tests off with ```$ mvn test```
+2. Run ```export BUILD_TAG=$(python -c 'import datetime; print datetime.datetime.now()')``` again to reset the system date/time value in BUILD_TAG (or reload your ```~/.bash_profile``` or ```~/.zshrc``` file)
+3. After you've run the first set of tests, go into Screener and accept the snapshots, creating the Baselines for each snapshot.
+4. After the Baselines are set, go into src/test/java/com.swaglabs/Tests/LoginValidUser.java, and look for the blocks of commented sneaky javascript. Uncomment those blocks, and re-run the tests.
+5. Those blocks of javascript will cause your next test to fail, and provide you with some great examples of how Visual works.
 
 [Sauce Labs Dashboard](https://saucelabs.com/beta/dashboard)
 
