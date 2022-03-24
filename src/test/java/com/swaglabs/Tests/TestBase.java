@@ -67,19 +67,31 @@ public class TestBase {
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
 
+            /*
+            *  ******************************************
+            *
+            *                 !!! NOTE !!!
+            *        Each browser that you add/uncomment
+            *        below will run NINE functional tests
+            *        Add/uncomment browsers as needed
+            *
+            *   ******************************************
+            */
+
+
             new Object[]{"firefox", "latest", "Windows 10"},
 //            new Object[]{"firefox", "latest", "Windows 7"},
 //            new Object[]{"firefox", "latest-1", "Windows 10"},
 //            new Object[]{"firefox", "latest-2", "Windows 10"},
 
-            new Object[]{"chrome", "latest", "Windows 10"},
+//            new Object[]{"chrome", "latest", "Windows 10"},
 //            new Object[]{"chrome", "latest-1", "Windows 10"},
 //            new Object[]{"chrome", "latest-2", "Windows 10"},
 
-            new Object[]{"chrome", "latest", "Windows 7"},
+//            new Object[]{"chrome", "latest", "Windows 7"},
 
 
-            new Object[]{"MicrosoftEdge", "latest", "Windows 10"},
+//            new Object[]{"MicrosoftEdge", "latest", "Windows 10"},
 //            new Object[]{"MicrosoftEdge", "latest-1", "Windows 10"},
 //            new Object[]{"MicrosoftEdge", "latest-2", "Windows 10"},
 
@@ -90,7 +102,7 @@ public class TestBase {
 
 
                 // Mac OS
-            new Object[]{"safari", "14", "macOS 11.00"},
+//            new Object[]{"safari", "14", "macOS 11.00"},
 //            new Object[]{"safari", "latest", "macOS 10.15"},
 //            new Object[]{"safari", "13.0", "macOS 10.15"},
 //            new Object[]{"safari", "latest-2", "macOS 10.11"},
@@ -169,71 +181,63 @@ public class TestBase {
     protected void createDriver(String browser, String version, String os, String methodName)
             throws MalformedURLException {
 
+        // These proxy setting are only here for certain types of troubleshooting - ignore them unless you need them
 //        System.setProperty("http.proxyHost", "localhost");
 //        System.setProperty("http.proxyPort", "8080");
 
 //        System.setProperty("https.proxyHost", "localhost");
 //        System.setProperty("https.proxyPort", "8080");
 
-//        DesiredCapabilities capabilities = new DesiredCapabilities();
+//        DesiredCapabilities capabilities = new DesiredCapabilities(); //DesiredCapabilities are for older Selenium calls
         MutableCapabilities capabilities = new MutableCapabilities();
 
-        // set desired capabilities to launch appropriate browser on Sauce
-        capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
-        capabilities.setCapability(CapabilityType.BROWSER_VERSION, version);
-        capabilities.setCapability(CapabilityType.PLATFORM_NAME, os);
+            // set desired capabilities to launch appropriate browser on Sauce
+            capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
+            capabilities.setCapability(CapabilityType.BROWSER_VERSION, version);
+            capabilities.setCapability(CapabilityType.PLATFORM_NAME, os);
 
-
-//        capabilities.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
-//        capabilities.setCapability("projectName", "Atlassian");
-//        capabilities.setCapability("viewportSize", "1920x1080");
-//        capabilities.setCapability("username", username);
-//        capabilities.setCapability("accessKey", accesskey);
-//        capabilities.setCapability("name", methodName + " password logging enabled");
-//        capabilities.setCapability("build", buildTag);
-
+            // sauceVisual block is require if running Visual tests - set your options here
             MutableCapabilities sauceVisual = new MutableCapabilities();
             sauceVisual.setCapability("apiKey", System.getenv("SCREENER_API_KEY"));
-            sauceVisual.setCapability("projectName", "TomsTest3");
+            sauceVisual.setCapability("projectName", "MainProject"); // you can change this as needed
             sauceVisual.setCapability("viewportSize", "1920x1080");
-            sauceVisual.setCapability("viewportSize", "640x360");
-            sauceVisual.setCapability("viewportSize", "1024x768"); // You can test multiple viewport sizes at the same time
-            sauceVisual.setCapability("branch", "figma/1");
-            sauceVisual.setCapability("baseBranch", "figma/branch1");
+            sauceVisual.setCapability("branch", "mainBranch");
+//            sauceVisual.setCapability("baseBranch", "mainBranch"); // you'll need to understand how our branching system and Baseline management works - check out the documentation, and use this repo to test
 //
-        capabilities.setCapability("sauce:visual", sauceVisual);
+//            capabilities.setCapability("sauce:visual", sauceVisual);
 
-//        Map<String, Object> deviceMetrics = new HashMap<>();
-//        deviceMetrics.put("width", 360);
-//        deviceMetrics.put("height", 640);
-//        deviceMetrics.put("pixelRatio", 3.0);
+
+            // these Map blocks were for testing mobile viewports - you can ignore/use as needed
+//            Map<String, Object> deviceMetrics = new HashMap<>();
+//            deviceMetrics.put("width", 360);
+//            deviceMetrics.put("height", 640);
+//            deviceMetrics.put("pixelRatio", 3.0);
 //
-//        Map<String, Object> mobileEmulation = new HashMap<>();
-//        mobileEmulation.put("deviceMetrics", deviceMetrics);
-//        mobileEmulation.put("userAgent", "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19");
+//            Map<String, Object> mobileEmulation = new HashMap<>();
+//            mobileEmulation.put("deviceMetrics", deviceMetrics);
+//            mobileEmulation.put("userAgent", "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19");
 
+            // this ChromeOptions block was used for troublehshooting - ignore/use as needed
+//            ChromeOptions chromeOptions = new ChromeOptions();
+//            chromeOptions.addArguments("--use-fake-device-for-media-stream");
+//            chromeOptions.addArguments("--use-fake-ui-for-media-stream");
+//            chromeOptions.addArguments("--use-fake-codec-for-peer-connection");
+//            chromeOptions.addArguments("--use-fake-mjpeg-decode-accelerator");
+//            chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
 
-//        ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.addArguments("--use-fake-device-for-media-stream");
-//        chromeOptions.addArguments("--use-fake-ui-for-media-stream");
-//        chromeOptions.addArguments("--use-fake-codec-for-peer-connection");
-//        chromeOptions.addArguments("--use-fake-mjpeg-decode-accelerator");
-//        chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
+            MutableCapabilities sauce = new MutableCapabilities(); //required for Visual or Core Sauce
+            sauce.setCapability("username", username);
+            sauce.setCapability("accessKey", accesskey);
+            sauce.setCapability("name", methodName + " "); //enter any string value here if you're running troubleshooting tests to help separate them in your Dashboard
+//            sauce.setCapability("extendedDebugging",true);
+//            sauce.setCapability("capturePerformance",true);
 
-        MutableCapabilities sauce = new MutableCapabilities();
-        sauce.setCapability("username", username);
-        sauce.setCapability("accessKey", accesskey);
-        sauce.setCapability("name", methodName + " password logging enabled");
+//            sauce.setCapability("chromeOptions", chromeOptions); // uncomment this line if you're using ChromeOptions above
 
+//        sauce.setCapability("commandTimeout", 600); // another troubleshooting line - ignore unless needed
+//        sauce.setCapability("tunnelIdentifier", ""); // explicitly call out a Sauce Connect Tunnel if needed
 
-//        sauce.setCapability("chromeOptions", chromeOptions);
-//        sauce.setCapability("extendedDebugging",true);
-//        sauce.setCapability("capturePerformance",true);
-//
-//        sauce.setCapability("commandTimeout", 600);
-//        sauce.setCapability("tunnelIdentifier", "03daaec891004e2cac77b57f7568a614");
-
-        //Getting the build name.
+        // Getting the build name.
         // Using the Jenkins ENV var or Github Action ENV var. You can use your own. If it is not set test will run without a build id.
 
         if (buildTag != null) {
@@ -246,11 +250,11 @@ public class TestBase {
         capabilities.setCapability("sauce:options", sauce);
 
 
-        System.out.print(capabilities);
+        System.out.print(capabilities); // this just prints what you're sending to Sauce in the console - helpful for troubleshooting
 
         // Launch remote browser and set it as the current thread
         webDriver.set(new RemoteWebDriver(
-//                        new URL("https://ondemand.us-west-4-i3er.saucelabs.com/wd/hub"), // Sauce full VMs
+//                        new URL("https://ondemand.us-west-4-i3er.saucelabs.com/wd/hub"), // Experimental Sauce on full VMs
 //                        new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), // Sauce full VMs
                         new URL("https://hub.screener.io:443/wd/hub"), // Screener full VMs
                         capabilities)
@@ -259,7 +263,6 @@ public class TestBase {
         // set current sessionId
         String id = ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
         sessionId.set(id);
-//        String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s", sessionId, System.getenv("JOB_NAME"));
     }
 
     /**
