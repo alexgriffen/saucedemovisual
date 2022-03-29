@@ -204,7 +204,7 @@ public class TestBase {
             sauceVisual.setCapability("branch", "mainBranch");
 //            sauceVisual.setCapability("baseBranch", "mainBranch"); // you'll need to understand how our branching system and Baseline management works - check out the documentation, and use this repo to test
 //
-//            capabilities.setCapability("sauce:visual", sauceVisual);
+            capabilities.setCapability("sauce:visual", sauceVisual);
 
 
             // these Map blocks were for testing mobile viewports - you can ignore/use as needed
